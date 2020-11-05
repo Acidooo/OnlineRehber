@@ -1,0 +1,32 @@
+  
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+Kullanıcı Giriş Sayfası
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2 class="heading font-weight-light text-center">Giriş Yap</h2>
+    <hr>
+</div>
+<div class="container w-25 card p-4 mt-4">
+    <form  action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form|crispy}}
+         {% comment %} <div class="form-row">
+            <div class="form-group w-100 mb-0">
+                {{ form.username|as_crispy_field }}
+            </div>
+            
+        </div>
+        <div class="form-row">            
+            <div class="form-group w-100  mb-0">
+                {{ form.password|as_crispy_field }}
+            </div>
+        </div>  {% endcomment %}
+    <input type="submit" value="Giriş Yap" class="w-100 text-white text-center my-2 btn btn-info">
+    </form>
+</div>
+
+{% endblock content %}

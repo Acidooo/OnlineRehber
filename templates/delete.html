@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {% if contact.manager == request.user %}
+		"{{contact}}" Kaydını Sil
+	{% else %}
+	    Bu Sayfaya Erişim İzniniz Yok!
+	{% endif %}
+{% endblock title %}
+
+
+{% block content %}
+    {% if contact.manager == request.user %}		
+        <div class="container">
+            <h2 class="heading font-weight-light text-center">"{{contact}}" Kaydı Sil</h2>
+            <hr>
+        </div>
+
+        <div class="container w-25 card p-4 mt-4">
+            <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form|crispy}}    
+            <input type="submit" value="Kaydı Sil" class="w-100 text-white text-center my-2 btn" style="background: #ff4f00">
+            </form>
+        </div>
+
+	{% else %}
+	    <div class="container">
+      	    <h2 class="heading font-weight-light text-center">Bu Sayfaya Erişim İzniniz Yok!</h2>
+      	    <hr />
+        </div>
+	{% endif %}
+
+
+
+
+
+{% endblock content %}

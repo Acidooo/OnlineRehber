@@ -1,0 +1,188 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+	<!-- Meta Tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+	<!-- Bootstrap CSS Link -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+	<!-- Static CSS File-->
+	<link rel="stylesheet" href="{% static './css/main.css' %}" />
+
+	<!-- Custom Font and Icons -->
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" />
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet'>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" />
+	{% comment %}
+	<link rel="title icon" href="{% static 'images/contact-icon.png' %}" /> {% endcomment %}
+
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+	{% comment %} <link rel="shortcut icon" href="{% static 'favicon.png' %}" /> {% endcomment %}
+
+	<title>
+		{% block title %}
+		{% endblock title %}
+	</title>
+</head>
+
+<body>
+
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-md ">
+		<div class="navbar-collapse h-auto m-auto w-50 order-0 order-md-0 dual-collapse2">
+			<ul class="navbar-nav mr-auto w-auto h-auto m-auto">
+				<li class="nav-item active h-auto m-auto">
+					<a class="logo" href="{% url 'home' %}" >
+						<i class="fas fa-address-book" ></i>&nbsp;Rehberim</a> 
+				</li>
+				{% comment %} <p class="addContact mt-2 pl-5">
+					<a  class="mr-4 text-white" href="#" >
+						<i class="fas fa-plus"></i>&nbsp;Kişi Ekle
+					</a>
+					<a  class="mr-4 text-white" href="#" >
+						<i class="fas fa-plus"></i>&nbsp;Kişi Ekle
+					</a>
+					<a  class="mr-4 text-white" href="#" >
+						<i class="fas fa-plus"></i>&nbsp;Kişi Ekle
+					</a>
+				</p> {% endcomment %}
+			</ul>
+		</div>
+
+		<div class="navbar-collapse order-1 w-50 dual-collapse2" >
+			<ul class="navbar-nav mr-auto">
+				
+				<p class="navbar-features mt-auto h-auto m-auto">
+					{% if request.user.is_authenticated %}
+						<a  class="mr-4 text-white" href="{% url 'logout' %}" ><i class="fas fa-sign-out-alt"></i>&nbsp;Çıkış&nbsp;Yap</a> 
+					<a  class="mr-4 text-white" href="{% url 'create' %}" ><i class="fas fa-plus"></i>&nbsp;Kişi&nbsp;Ekle</a>					
+
+					{% else %}
+						<a  class="mr-4 text-white" href="{% url 'login' %}" ><i class="fas fa-sign-in-alt"></i>&nbsp;Giriş&nbsp;Yap</a>
+						<br><a  class="mr-4 text-white" href="{% url 'signup' %}" ><i class="fas fa-user-plus"></i>&nbsp;Kayıt&nbsp;Ol</a>
+					{% endif %}					
+					 
+				</p>
+			</ul>
+		</div>
+		
+		<div class="navbar-collapse w-auto  w-auto h-auto m-auto  mx-auto order-3">
+			<form class="form-inline my-2" action="{% url 'search' %}" method="GET">
+				<input class="form-control search-box text-center" type="search" placeholder="Kişi Ara..."
+					name="search_term" value="{{search_term}}" />
+				{% comment %} <button class="btn" type="submit"><i class="fas fa-search"></i></button> {% endcomment %}
+			</form>
+			
+		</div>
+		
+		<div class="navbar-collapse   w-100 order-3 dual-collapse2">
+
+			{% if request.user.is_authenticated %}
+					<p class="navbar-features mt-auto h-auto m-auto">					
+						{% comment %} <a  class="mr-4 text-white" href="{% url 'logout' %}" ><i class="fas fa-sign-out-alt"></i>{{user.get_username}}</a>  {% endcomment %}
+						<em>Aktif Kullanıcı: "</em> <em style="color:#fff;">{{user.get_username}}</em>	<em>"</em> 
+					</p>
+			{% endif %}	
+
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item w-auto h-auto m-auto">
+					<div class="theme-switcher">
+						<label class="theme-switch" for="checkbox">
+							<input type="checkbox" id="checkbox" />
+							<div class="slider round"></div>
+						</label>
+						<em class="h-auto m-auto">Koyu Mod</em>
+				</li>				
+			</ul>
+		</div>
+	</nav>
+	<!-- Navbar ends -->
+
+	</div>
+
+	</div>
+
+
+	<br />
+
+	{% include "partials/_message.html" %}
+
+	{% block content %}
+
+	{% endblock content %}
+	<br />
+	<br />
+
+	<!-- footer -->
+	<footer class="mt-4 p-0 fixed-bottom">
+		<p class="text-center p-1 m-0">&copy; 2020 A.Berk COŞKUN</p>
+	</footer>
+	<!-- footer ends -->
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+		integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous">
+	</script>
+	{% comment %} <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+	</script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+	</script> {% endcomment %}
+
+	<script>
+		const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+		const currentTheme = localStorage.getItem('theme');
+
+		if (currentTheme) {
+			document.documentElement.setAttribute('data-theme', currentTheme);
+			if (currentTheme === 'dark') {
+				toggleSwitch.checked = true;
+			}
+		}
+
+		function switchTheme(e) {
+			if (e.target.checked) {
+				document.documentElement.setAttribute('data-theme', 'dark');
+				localStorage.setItem('theme', 'dark');
+			} else {
+				document.documentElement.setAttribute('data-theme', 'light');
+				localStorage.setItem('theme', 'light');
+			}
+		}
+
+		toggleSwitch.addEventListener('change', switchTheme, false);
+
+
+		{% comment %} function confirm_delete() {			
+			var ans = confirm("Kaydı silmeyi onaylıyor musunuz?");
+
+			if (ans == true) {
+				txt = "You pressed OK!";
+			} else {
+				txt = "You pressed Cancel!";
+			}			
+		} {% endcomment %}
+
+	</script>
+</body>
+</html>

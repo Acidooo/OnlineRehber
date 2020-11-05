@@ -1,0 +1,327 @@
+:root {
+  --back: #ff4f00; /*#ff4f00 turuncu renk*/
+  --logoBackground: #ff4f00;
+  --girl: #e64298;
+  --boy: #2874dd;
+  --bodyBackground:#fff;
+  --cardBackground:#fff;
+  --logoColor:#fff;
+  --footerColor:#fff;
+  --koyuModColor:#000;
+  --labelColor:#000;
+  --transitionTime: 1.2s;
+}
+
+body {
+  font-family: Lato, sans-serif;
+  background-color:var(--bodyBackground);
+  transition: background-color var(--transitionTime);
+
+}
+
+/* Navbar Styles */
+/* 
+.btn-outline-secondary {
+  color: #ff6a00;
+  border-color: #ff6a00;
+  background-color: #f2f3f5;
+  border-radius:  10px !important;
+
+}
+.btn-outline-secondary:hover {
+  color: #ff6a00;
+  border-color: #ff6a00;
+  background-color: #dadada;
+  border-radius: 10px !important;
+
+} */
+
+.form-control {
+  border-radius: 10px !important;
+  background-color: #dadada;
+  border-color: #ff4f00;
+}
+
+/* .login-clean form {
+  max-width: 320px;
+  width: 90%;
+  margin: 0 auto;
+  background-color:var(--cardBackground);
+  transition: background-color var(--transitionTime);
+  padding: 40px;
+  border-radius: 4px;
+  color: #505e6c;
+  box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.2);
+}
+.login-clean form .form-control {
+  background: #f7f9fc;
+  border: none;
+  border-bottom: 1px solid #dfe7f1;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+  color: inherit;
+  text-indent: 8px;
+  height: 42px;
+}
+ */
+
+
+nav {
+  font-weight: light;
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--back);
+  align-items: center;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2);
+  transition: background-color var(--transitionTime);
+
+}
+.logo {
+  font-size: 30px;
+  letter-spacing: 1px;
+  background: var(--logo);
+  color: var(--logoColor);
+  padding: 2px 12px;
+  border-radius: 8px;
+  font-family: cursive;
+  transition: color var(--transitionTime);
+}
+.logo:hover {
+  color: white;
+  text-decoration: none;
+}
+/* form {
+  position: relative;
+}
+button {
+  position: absolute;
+  right: 1px;
+  outline: none;
+  cursor: pointer;
+}
+button i {
+  color: var(--back);
+} */
+
+.search-box {
+  border-radius: 0px !important;
+  width: 250px;
+  border: none !important;
+  background-color: #f2f3f5ec !important;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px !important;
+  background-color: #dadada;
+}
+/* Navbar Styles end */
+
+
+
+/* Card Styles */
+
+a {
+  align-self: center;
+}
+
+.card {
+  box-shadow: 8px 8px 5px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.7s;
+  min-width: 250px;
+  box-sizing: border-box;
+  background-color: var(--cardBackground);
+  transition: background-color var(--transitionTime);
+}
+
+.card:hover {
+  box-shadow: 8px 8px 18px 0 rgba(0, 0, 0, 0.7);
+}
+img {
+  height: 130px !important;
+  object-fit: scale-down;
+}
+.card-header {
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.header-link:hover {
+  text-decoration: none;
+}
+.boy-card .card-header {
+  background-color: var(--boy);
+}
+.boy-card .card-body,
+.boy-card .card-body p a {
+  color: var(--boy);
+}
+.girl-card .card-header {
+  background-color: var(--girl);
+}
+.girl-card .card-body,
+.girl-card .card-body p a {
+  color: var(--girl);
+}
+.card-body p {
+  cursor: pointer;
+}
+/* Card Styles end */
+
+/* Main Section */
+.main-part {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+/* Main Section ends */
+
+/* footer style */
+footer {
+  background-color: var(--back);
+  color: var(--footerColor);
+  font-size: 18px;
+  position: fixed;
+  /* border-bottom: 3px solid var(--back); */
+  transition: background-color var(--transitionTime);
+  transition: color var(--transitionTime);
+}
+
+/* footer style ends*/
+
+/*Detail Page*/
+.btn-width-custom {
+  width: 240px !important;
+}
+/*Detail Page ENDS*/
+
+/*Create Page*/
+label{
+  color: var(--labelColor);
+  transition: color var(--transitionTime);
+}
+/*Create Page Ends*/
+
+
+/* Media Queries */
+@media only screen and (max-width: 768px) {
+  /* navbar style */
+  nav {
+    flex-direction: column;
+  }
+  .navbar-features{ 
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+  }
+
+  .logo {
+    font-size: 22px !important;
+  }
+  /* navbar style ends */
+
+  /* card styles */
+  .card-header {
+    font-size: 90% !important;
+  }
+  .card-body p {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+  .card-body {
+    padding: 8px 8px 0 8px;
+  }
+  /* card styles end */
+
+  /* footer style */
+  footer {
+    font-size: 98% !important;
+    font-weight: light;
+    letter-spacing: 1px;
+  }
+  /* footer style ends */
+}
+/* Media Queries Ends*/
+
+
+
+
+
+/* Dark Mode Color Definitions */
+
+[data-theme="dark"] {
+  --back: #444; /*#ff4f00 turuncu renk*/
+  --logoBackground: transparent;
+  --girl: #e64298;
+  --boy: #2874dd;
+  --bodyBackground:#888;
+  --cardBackground:#444;
+  --logoColor:#ff4f00;
+  --footerColor:#ff4f00;
+  --koyuModColor:#fff;
+  --labelColor:#fff;
+  --transitionTime: 0;
+}
+/* Dark Mode Color Definitions Ends*/
+
+/*Dark Mode Switch Style*/
+.theme-switcher {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;   
+  float: right;
+}
+em {
+  /* margin-left: 5px;
+  font-size: 15px;
+  font-weight: light;
+  align-self: center;
+  padding-bottom: 7px; */
+  color: var(--koyuModColor);
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+.theme-switch input {
+  display:none;
+}
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+}
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background-color: #ff4f00;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+.slider.round {
+  border-radius: 34px;
+}
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/*Dark Mode Switch Style Ends*/

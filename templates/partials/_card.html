@@ -1,0 +1,67 @@
+{% load static %} 
+
+{% if contact.cinsiyet == 'erkek' %}
+		<div class="card my-2 mx-2 boy-card {% if 'detail' in request.path %} mx-auto w-25 {% endif %}">
+        <a href="{% url 'detail' contact.id %}" >	
+			<img src="  {% if contact.foto %}
+							{{contact.foto.url}}
+						{% else %}
+							{% static 'images/man.jpg' %}
+						{% endif %}" class="img-fluid" />
+		</a>
+			<div class="card-header text-center">
+				<a href="{% url 'detail' contact.id %}" class="text-white header-link">{{contact.isim}} {{contact.soyisim}} </a>
+			</div>
+			<div class="card-body pb-0">
+				<p>
+					<i class="fas fa-at mr-2" data-toggle="tooltip" data-placement="top" title="e-mail"></i>
+					<a href="mailto:{{contact.email}}">{{contact.email}}</a>
+				</p>
+				<p>
+					<i class="fas fa-phone mr-2"data-toggle="tooltip" data-placement="top" title="Telefon"></i>
+					<a href="tel:{{contact.telefon}}">{{contact.telefon}}</a>
+				</p>
+				<p><i class="fas fa-info-circle mr-2"data-toggle="tooltip" data-placement="top" title="Bilgi"></i>{{contact.bilgi}}</p>
+				<p><i class="fas fa-tags mr-2" data-toggle="tooltip" data-placement="top" title="Etiket"></i> {{contact.etiket}}</p>
+			</div>
+			<div class="btn justify-content-between">	
+				<a href="{% url 'update' contact.id %}" class="far fa-edit btn-info "  style="background: #17a2b8; padding:10px; border-radius: 50%;"></a>
+				<a href="{% url 'delete' contact.id %}" class="far fa-trash-alt btn-info" style="background: #dc3545; padding:10px; border-radius: 50%;"></a>
+				 {% comment %} <a href="#" class="far fa-trash-alt btn-info" style="background: #dc3545; padding:10px; border-radius: 50%;" 
+				 onclick="return confirm_delete()" id="delete-btn" data-object-id="{{ contact.id }}" ></a> {% endcomment %}
+			</div>
+
+		</div>
+
+{% else %}
+		<div class="card my-2 mx-2 girl-card">
+			<a href="{% url 'detail' contact.id %}" >
+				<img src="{% if contact.foto %}
+										{{contact.foto.url}}
+									{% else %}
+										{% static 'images/woman.jpg' %}
+									{% endif %}" class="img-fluid" />
+			</a>
+			<div class="card-header text-center">
+				<a href="{% url 'detail' contact.id %}" class="text-white header-link">{{contact.isim}} {{contact.soyisim}}</a>
+			</div>
+			<div class="card-body pb-0">
+				<p>
+					<i class="fas fa-at mr-2"  data-toggle="tooltip" data-placement="top" title="e-mail"></i>
+					<a href="mailto:{{contact.email}}">{{contact.email}}</a>
+				</p>
+				<p>
+					<i class="fas fa-phone mr-2"  data-toggle="tooltip" data-placement="top" title="Telefon"></i>
+					<a href="tel:{{contact.telefon}}">{{contact.telefon}}</a>
+				</p>
+				<p><i class="fas fa-info-circle mr-2"  data-toggle="tooltip" data-placement="top" title="Bilgi" ></i> {{contact.bilgi}}</p>
+				<p><i class="fas fa-tags mr-2" data-toggle="tooltip" data-placement="top" title="Etiket"></i> {{contact.etiket}}</p>
+
+			</div>
+			<div class="btn justify-content-between">	
+				<a href="{% url 'update' contact.id %}" class="far fa-edit btn-info "  style="background: #17a2b8;   padding:10px;  border-radius: 50%;"></a>
+				<a href="{% url 'delete' contact.id %}" class="far fa-trash-alt btn-info" style="background: #dc3545;   padding:10px;  border-radius: 50%;"></a>
+			</div>
+		</div>
+
+{% endif %}
